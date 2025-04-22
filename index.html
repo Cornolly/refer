@@ -68,12 +68,26 @@
       Thanks for using SummitFX! If you know someone else who could benefit from better exchange rates and a 20% stake in the business, share it with them via WhatsApp.
     </p>
     <a
+      id="share-link"
       class="share-button"
-      href="https://wa.me/?text=I've%20just%20used%20SummitFX%20for%20a%20currency%20exchange%20-%20great%20rates%2C%20super%20easy%2C%20and%20clients%20have%20a%2020%25%20stake%20in%20the%20business!%20Send%20the%20team%20a%20message%20here%20and%20they’ll%20help%20you%20get%20started:%20https%3A%2F%2Fstart.summitfx.com"
+      href="#"
       target="_blank"
     >
       Share via WhatsApp
     </a>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get("ref") || "someone";
+      const encodedRef = encodeURIComponent(ref);
+      const startUrl = `https://start.summitfx.com/?ref=${encodedRef}`;
+
+      const message = `I've just used SummitFX for a currency exchange - great rates, super easy, and clients have a 20% stake in the business! Send the team a message here and they’ll help you get started: ${startUrl}`;
+
+      const waLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      document.getElementById("share-link").href = waLink;
+    </script>
+
   </div>
 </body>
 </html>
