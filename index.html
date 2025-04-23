@@ -80,7 +80,7 @@
       const params = new URLSearchParams(window.location.search);
       const ref = params.get("ref") || "someone";
       const encodedRef = encodeURIComponent(ref);
-      const startUrl = `${encodedRef}`;
+      const startUrl = `https://start.summitfx.com/?ref=${encodedRef}`;
 
       const message = `I've just used SummitFX for a currency exchange - great rates, super easy, and clients have a 20% stake in the business! Send the team a message and they’ll help you get started: ${startUrl}`;
 
