@@ -78,7 +78,17 @@
 
     <script>
       const params = new URLSearchParams(window.location.search);
-      const ref = params.get("ref") || "someone";
+      let ref = params.get("ref") || "someone";
+
+      // Handle double-stacked URL case like ?ref=https://refer.summitfx.com/?ref=Nick%20Cornford-Jolly
+      if (ref.startsWith("https://refer.summitfx.com/?ref=")) {
+        const innerParams = new URLSearchParams(ref.split('?')[1]);
+        const innerRef = innerParams.get("ref");
+        if (innerRef) {
+          ref = innerRef;
+        }
+      }
+
       const encodedRef = encodeURIComponent(ref);
       const startUrl = `https://start.summitfx.com/?ref=${encodedRef}`;
 
@@ -86,7 +96,7 @@
 
       const waLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
       document.getElementById("share-link").href = waLink;
-    </script>
+     </script>
 
   </div>
 </body>
